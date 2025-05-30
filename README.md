@@ -30,3 +30,11 @@ yarn build
 ```
 docker compose up -d --build
 ```
+
+Остановить контейнер
+
+```
+docker compose stop
+```
+
+## Посмотреть готовый результат можно на сайте http://andrey187.fvds.ru:3001
