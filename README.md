@@ -22,10 +22,12 @@ yarn dev
 yarn build
 ```
 
-## Сборка и запуск контейнера в daemon режиме на порту 3001
-
+## Запуск в docker`е
 
 В корневой папке где находится docker-compose.yml
+
+
+Сборка и запуск контейнера в daemon режиме на порту 3001
 
 ```
 docker compose up -d --build
@@ -37,4 +39,8 @@ docker compose up -d --build
 docker compose stop
 ```
 
-## Посмотреть готовый результат можно на сайте http://andrey187.fvds.ru:3001
+## Посмотреть готовый результат можно на сайте
+
+```
+http://andrey187.fvds.ru:3001
+```
