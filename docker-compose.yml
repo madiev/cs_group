@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  frontend:
+    image: cs_group/front
+    container_name: cs_group
+    build:
+      context: ./front
+    ports:
+      - 8080:3000
+    restart: on-failure
