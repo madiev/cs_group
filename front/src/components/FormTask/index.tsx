@@ -76,7 +76,7 @@ const ComponentForm: React.FC<Props> = ({ onSubmit, editTaskID }) => {
         autoComplete="off"
       >
         <Form.Item<FieldType>
-          label="Название задачи"
+          label="Название"
           name="taskname"
           rules={[{ required: true, message: 'Введите название задачи' }]}
         >
@@ -84,7 +84,7 @@ const ComponentForm: React.FC<Props> = ({ onSubmit, editTaskID }) => {
         </Form.Item>
 
         <Form.Item<FieldType>
-          label="Описание задачи"
+          label="Описание"
           name="description"
           rules={[{ required: true, message: 'Введите описание задачи' }]}
         >
