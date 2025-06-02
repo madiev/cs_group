@@ -5,7 +5,7 @@ import editTasknameReducer from '../components/ListTask/editTasknameSlice';
 export const store = configureStore({
   reducer: {
     taskList: formReducer,
-    editTaskname: editTasknameReducer,
+    editTaskID: editTasknameReducer,
   },
 });
 

@@ -39,7 +39,7 @@ const initialState: FieldType[] = [
 ];
 
 interface UpdateTask {
-  taskname: string;
+  id: string;
   data: FieldType;
 };
 
@@ -51,12 +51,12 @@ export const formSlice = createSlice({
       state.push(action.payload);
     },
     deleteTask: (state, action: PayloadAction<string>) => {
-      const filter = state.filter((item) => item.taskname !== action.payload);
+      const filter = state.filter((item) => item.id !== action.payload);
       return state = filter;
     },
     updateTask: (state, action: PayloadAction<UpdateTask>) => {
       const filter = state.map((item) => {
-        if (item.taskname === action.payload.taskname) {
+        if (item.id === action.payload.id) {
           return action.payload.data;
         }
         return item;

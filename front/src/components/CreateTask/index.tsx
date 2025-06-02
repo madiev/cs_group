@@ -8,12 +8,12 @@ import { resetEditTaskname } from '../ListTask/editTasknameSlice';
 const ComponentModal: React.FC = () => {
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const editTaskname = useSelector((state: RootState) => state.editTaskname);
+  const editTaskID = useSelector((state: RootState) => state.editTaskID);
   useEffect(() => {
-    if (editTaskname.taskname) {
+    if (editTaskID.id) {
       setIsModalOpen(true);  
     }
-  }, [editTaskname]);
+  }, [editTaskID]);
 
   const showModal = useCallback(() => {
     setIsModalOpen(true);
@@ -33,7 +33,7 @@ const ComponentModal: React.FC = () => {
     <>
       <Button color="cyan" variant="solid" onClick={showModal} >Добавить задачу</Button>
       <Modal
-        title={editTaskname.taskname ? 'Редактировать задачу' : 'Добавить задачу'}
+        title={editTaskID.id ? 'Редактировать задачу' : 'Добавить задачу'}
         closable={{ 'aria-label': 'Custom Close Button' }}
         open={isModalOpen}
         onOk={handleOk}
@@ -46,7 +46,7 @@ const ComponentModal: React.FC = () => {
       >
         <Form
           onSubmit={handleCancel}
-          editTaskname={editTaskname}
+          editTaskID={editTaskID}
         />
       </Modal>
     </>

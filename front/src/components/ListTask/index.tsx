@@ -88,10 +88,10 @@ interface PropsActions {
 const ComponentActions: React.FC<PropsActions> = ({ item }) => {
   const dispatch = useDispatch<AppDispatch>();
   const handleDelete = useCallback(() => {
-    dispatch(deleteTask(item.taskname));
+    dispatch(deleteTask(item.id));
   }, []);
   const handleEdit = useCallback(() => {
-    dispatch(setEditTaskname(item.taskname));
+    dispatch(setEditTaskname(item.id));
   }, []);
   return (
     <Space size="middle">

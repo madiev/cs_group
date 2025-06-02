@@ -7,7 +7,7 @@ import type { RootState, AppDispatch } from '../../store';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { formatDate } from '../../utils/formatDate';
-import type { Taskname } from '../ListTask/editTasknameSlice';
+import type { TaskID } from '../ListTask/editTasknameSlice';
 
 export type FieldType = {
   id: string,
@@ -25,30 +25,29 @@ const { TextArea } = Input;
 
 interface Props {
   onSubmit: () => void;
-  editTaskname: Taskname;
+  editTaskID: TaskID;
 }
 
-const ComponentForm: React.FC<Props> = ({ onSubmit }) => {
+const ComponentForm: React.FC<Props> = ({ onSubmit, editTaskID }) => {
   const [form] = Form.useForm();
   const dispatch = useDispatch<AppDispatch>();
-  const editTaskname = useSelector((state: RootState) => state.editTaskname);
   const taskList = useSelector((state: RootState) => state.taskList);
 
   useEffect(() => {
-    if (editTaskname.taskname) {
-      const data = taskList.filter((item) => item.taskname === editTaskname.taskname)[0];
+    if (editTaskID.id) {
+      const data = taskList.filter((item) => item.id === editTaskID.id)[0];
       form.setFieldsValue(data);
     } else {
       form.resetFields();
       form.setFieldsValue({ priority: 'low' });
     }
-  }, [editTaskname]);
+  }, [editTaskID]);
 
   const onFinish: FormProps<FieldType>['onFinish'] = (data) => {
     const date = { id: Date.now().toString(), date: formatDate(new Date()) };
-    if (editTaskname.taskname) {
+    if (editTaskID.id) {
       dispatch(updateTask({
-        taskname: editTaskname.taskname,
+        id: editTaskID.id,
         data: {...data, ...date},
       }));
     } else {
@@ -108,7 +107,7 @@ const ComponentForm: React.FC<Props> = ({ onSubmit }) => {
 
         <Form.Item label={null}>
           <Button type="primary" htmlType="submit">
-            {editTaskname.taskname ? 'Сохранить' : 'Создать'}
+            {editTaskID.id ? 'Сохранить' : 'Создать'}
           </Button>
         </Form.Item>
       </Form>
