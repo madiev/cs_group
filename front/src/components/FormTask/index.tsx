@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import type { FormProps } from 'antd';
 import { Button, Form, Input, Select } from 'antd';
 import { useDispatch } from 'react-redux';
-import { updateTask, asyncPushTasklist } from './formSlice';
+import { updateTask, pushTaskList } from './formSlice';
 import type { RootState, AppDispatch } from '../../store';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
@@ -51,8 +51,8 @@ const ComponentForm: React.FC<Props> = ({ onSubmit, editTaskID }) => {
         data: {...data, ...date},
       }));
     } else {
-      //dispatch(pushTaskList({...data, ...date}));
-      dispatch(asyncPushTasklist({...data, ...date}));
+      dispatch(pushTaskList({...data, ...date}));
+      //dispatch(asyncPushTasklist({...data, ...date}));
     }
     onSubmit();
     form.resetFields();
